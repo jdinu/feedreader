@@ -72,16 +72,22 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-         it('Menu Toggle ', function () {                    
-            const body = document.querySelector('body');
-            const menu = document.querySelector('.menu-icon-link');
-            expect(body.classList.contains('menu-hidden')).toBe(true);
-            menu.click();
-            expect(body.classList.contains('menu-hidden')).toBe(false);
-            menu.click();
-            expect(body.classList.contains('menu-hidden')).toBe(true);
-         }); 
-
+         // Implememtation before review 
+        //  it('Menu Toggle ', function () {                    
+        //     const body = document.querySelector('body');
+        //     const menu = document.querySelector('.menu-icon-link');
+        //     expect(body.classList.contains('menu-hidden')).toBe(true);
+        //     menu.click();
+        //     expect(body.classList.contains('menu-hidden')).toBe(false);
+        //     menu.click();
+        //     expect(body.classList.contains('menu-hidden')).toBe(true);
+        //  }); 
+            it('Menu Toggle visibility', function() {
+            $('a.menu-icon-link').trigger('click'); // show menu
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+            $('a.menu-icon-link').trigger('click'); // hide menu again
+            expect($('body').hasClass('menu-hidden')).toBe(true);
+         });
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
         /* TODO: Write a test that ensures when the loadFeed
@@ -93,10 +99,15 @@ $(function() {
         beforeEach(function(done){
             loadFeed(0,done);
         });
-        
-        it('load feed complete',function(){
-            const feed = document.querySelector('.feed');
-            expect(feed.children.length > 0).toBe(true);
+        // Implementation before review
+        // it('load feed complete',function(){
+        //     const feed = document.querySelector('.feed');
+        //     expect(feed.children.length > 0).toBe(true);
+        // });
+        it('load feed complete',function(done){
+            const feed = document.querySelector('.feed');                
+            expect($('.feed .entry').length > 0).toBe(true);
+            done();
         });
     }); 
 
@@ -117,8 +128,20 @@ $(function() {
             });
             loadFeed(1,done);          
          });
+         // Implementation before review
+        // it('Content change on new feed load',function(){
+        //     var  feedcomparison = true;
+        //    Array.from(feed.children).forEach(function(entry,index){
+        //        // comparing the feed entries
+        //        if(!(entry.innerText, firstFeed[index],entry.innerText === firstFeed[index]))
+        //        {
+        //         feedcomparison = false;
+        //        }                  
+        //         expect(feedcomparison).toBe(false);
+        //    });
 
-        it('Content change on new feed load',function(){
+            //feed1Entries = $('.feed').html();
+         it('Content change on new feed load',function(){
             var  feedcomparison = true;
            Array.from(feed.children).forEach(function(entry,index){
                // comparing the feed entries
@@ -128,6 +151,7 @@ $(function() {
                }                  
                 expect(feedcomparison).toBe(false);
            });
+        
           
         });
     });
