@@ -10,7 +10,7 @@ If any test fails, error message will be displayed.
 
 # Test Suite Details
 
-1. There are 4 test suites in this Jasmime Test Suite , each containing one or more tests
+1. There are 4 test suites in this Jasmime Test Suite , each containing one or more tests, including some asynchronus tests
  RSS Feeds, The Menu, Initial Entries, New Feed Selection
 
 # Technologies used for testing
