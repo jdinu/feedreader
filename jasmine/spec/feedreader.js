@@ -113,6 +113,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
+        
         const feed = document.querySelector('.feed');
         const firstFeed =[];
         /* TODO: Write a test that ensures when a new feed is loaded
@@ -121,13 +122,13 @@ $(function() {
          * 
          */
         // beforeEach is to handle the asynchronous loading event
-        beforeEach(function(done){ 
-            loadFeed(0);
-            Array.from(feed.children).forEach(function(entry){
-                firstFeed.push(entry.innerText);
-            });
-            loadFeed(1,done);          
+        beforeEach(function(done){            
+           Array.from(feed.children).forEach(function(entry){
+               firstFeed.push(entry.innerText);
+           });
+           loadFeed(1,done);          
          });
+         
          // Implementation before review
         // it('Content change on new feed load',function(){
         //     var  feedcomparison = true;
@@ -138,18 +139,13 @@ $(function() {
         //         feedcomparison = false;
         //        }                  
         //         expect(feedcomparison).toBe(false);
-        //    });
-
-            //feed1Entries = $('.feed').html();
+        //    });           
          it('Content change on new feed load',function(){
-            var  feedcomparison = true;
-           Array.from(feed.children).forEach(function(entry,index){
-               // comparing the feed entries
-               if(!(entry.innerText, firstFeed[index],entry.innerText === firstFeed[index]))
-               {
-                feedcomparison = false;
-               }                  
-                expect(feedcomparison).toBe(false);
+           // var  feedcomparison = true;
+           Array.from(feed.children).forEach(function(entry,index){  
+               console.log((entry.innerText, firstFeed[index],entry.innerText === firstFeed[index]));            
+              expect(entry.innerText === firstFeed[index]).toBe(false);
+
            });
         
           
